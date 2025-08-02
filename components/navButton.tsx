@@ -6,7 +6,7 @@ import {
   StyleSheet,
   View
 } from "react-native";
-import GorditaText from "./GorditaText";
+import TellText from "./TellText";
 
 type NavButtonProps = {
   currentScreen: string;
@@ -37,10 +37,12 @@ const NavButton = ({ currentScreen }: NavButtonProps): JSX.Element => {
       accessibilityRole="button"
       accessibilityActions={[{ name: "activate", label: "Activate" }]}
       onAccessibilityAction={handleAccessibilityAction}
-      onPress={() => router.push(targetScreen)}
+      onPress={() => {
+        router.push(targetScreen);
+      }}
     >
       <View style={styles.textView}>
-        <GorditaText style={textStyle}>{label}</GorditaText>
+        <TellText style={textStyle}>{label}</TellText>
       </View>
     </Pressable>
   );
@@ -72,7 +74,6 @@ const styles = StyleSheet.create({
   },
   textView: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
+    justifyContent: "center"
   }
 });

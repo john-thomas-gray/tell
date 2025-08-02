@@ -1,12 +1,12 @@
 import React, { ReactNode } from "react";
 import { StyleSheet, Text, TextProps, TextStyle } from "react-native";
 
-type GorditaTextProps = {
+type TellTextProps = {
   children: ReactNode;
   style?: TextStyle | TextStyle[];
 } & TextProps;
 
-const GorditaText = ({ children, style, ...props }: GorditaTextProps) => {
+const TellText = ({ children, style, ...props }: TellTextProps) => {
   return (
     <Text style={[styles.default, style]} {...props}>
       {children}
@@ -21,4 +21,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default GorditaText;
+export default TellText;
