@@ -1,10 +1,25 @@
+import GorditaText from "@/components/GorditaText";
+import NavButton from "@/components/navButton";
 import React from "react";
-import { Text, View } from "react-native";
+import { View } from "react-native";
 
 const Settings = () => {
   return (
-    <View>
-      <Text>Settings</Text>
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: "black"
+      }}
+    >
+      <View
+        style={{
+          flex: 1
+        }}
+      />
+      <GorditaText>
+        Font Style{"\n"}Type of AD {"\n"} Font Size
+      </GorditaText>
+      <NavButton currentScreen="settings" />
     </View>
   );
 };
