@@ -2,7 +2,7 @@ import TellText from "@/components/TellText";
 import NavButton from "@/components/navButton";
 import { images } from "@/constants";
 import { LinearGradient } from "expo-linear-gradient";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   ColorValue,
   Image,
@@ -15,13 +15,12 @@ import {
   View
 } from "react-native";
 
-type MainProps = {
-  posterBackground?: string;
-  movieTitle?: string;
-};
-
 const backupBackground: ImageSourcePropType = images.defaultPoster;
 const backupMovieTitle = "Everything Everywhere All At Once";
+
+const devMovieId: string = "tt9619824";
+const devPlaceId: string = "ChIJ22DWFkF-hYARcdrN1YSJF4w";
+const devAuditoriumNumber: number = 1;
 
 const linearGradientVariants: Record<
   string,
@@ -66,11 +65,33 @@ const linearGradientVariants: Record<
   }
 };
 
-const Main = ({ posterBackground, movieTitle }: MainProps) => {
+const Main = () => {
+  const [fetchedTitle, setFetchedTitle] = useState<string | null>(null);
+  const [posterPath, setPosterPath] = useState<string | null>(null);
+  useEffect(() => {
+    const fetchMovieDetails = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:3000/screening/details?movieId=${devMovieId}&placeId=${devPlaceId}&auditoriumNumber=${devAuditoriumNumber}`
+        );
+        if (!response.ok) throw new Error("Failed to fetch screening data");
+
+        const data = await response.json();
+        setFetchedTitle(data.title);
+        setPosterPath(data.poster_path);
+      } catch (error) {
+        console.error("Error fetching screening details:", error);
+      }
+    };
+
+    fetchMovieDetails();
+  }, []);
   const [lineVarient, setLineVarient] = useState(1);
 
-  const backgroundSource: ImageSourcePropType = posterBackground
-    ? { uri: posterBackground }
+  const backgroundSource: ImageSourcePropType = posterPath
+    ? {
+        uri: `https://image.tmdb.org/t/p/w500/${posterPath}`
+      }
     : backupBackground;
 
   const handleTextLayout = (e: NativeSyntheticEvent<TextLayoutEventData>) => {
@@ -101,7 +122,7 @@ const Main = ({ posterBackground, movieTitle }: MainProps) => {
             numberOfLines={3}
             onTextLayout={handleTextLayout}
           >
-            {movieTitle ?? backupMovieTitle}
+            {fetchedTitle ?? backupMovieTitle}
           </TellText>
           <TellText style={styles.auditorium} numberOfLines={1}>
             Auditorium 16
