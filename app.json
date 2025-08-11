@@ -35,6 +35,13 @@
           "resizeMode": "contain",
           "backgroundColor": "#000000"
         }
+      ],
+      [
+        "expo-audio",
+        {
+          "microphonePermission": "Allow Tell to access your microphone.",
+          "NSMicrophoneUsageDescription": "Allow Tell to access your microphone."
+        }
       ]
     ],
     "experiments": {

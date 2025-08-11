@@ -40,3 +40,9 @@ app-example
 # ssh
 ssh
 ssh.pub
+
+# audio
+*.mp3
+*.wav
+*.aac
+*.flac

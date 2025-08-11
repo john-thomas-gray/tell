@@ -36,7 +36,9 @@ const Settings = () => {
             flex: 1
           }}
         />
-        <TellText>Type of AD {"\n"} Font Size (slider)</TellText>
+        <TellText>
+          Type of AD {"\n"} Font Size (slider) {"\n"} audio quality
+        </TellText>
       </ScrollView>
       <NavButton currentScreen="settings" />
     </View>

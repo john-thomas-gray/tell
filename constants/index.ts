@@ -1,5 +1,11 @@
 import adaptiveIcon from "../assets/images/adaptive-icon.png";
 
+import audioNotPlaying from "../assets/images/audio-not-playing.png";
+
+import audioPlaying from "../assets/images/audio-playing.png";
+
+import audioPlaying1 from "../assets/images/audio-playing1.png";
+
 import backgroundBackup from "../assets/images/backgroundBackup.jpg";
 
 import defaultPoster from "../assets/images/default-poster.png";
@@ -30,6 +36,9 @@ export const icons = {
 
 export const images = {
   adaptiveIcon,
+  audioNotPlaying,
+  audioPlaying,
+  audioPlaying1,
   backgroundBackup,
   defaultPoster,
   favicon,

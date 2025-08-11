@@ -1,15 +1,15 @@
+import AD_Sample from "@/assets/audio/AD_Sample_Half_Hour.mp3";
 import TellText from "@/components/TellText";
 import NavButton from "@/components/navButton";
+import PlayButton from "@/components/playButton";
 import { images } from "@/constants";
 import { LinearGradient } from "expo-linear-gradient";
 import React, { useEffect, useState } from "react";
 import {
   ColorValue,
-  Image,
   ImageBackground,
   ImageSourcePropType,
   NativeSyntheticEvent,
-  Pressable,
   StyleSheet,
   TextLayoutEventData,
   View
@@ -72,7 +72,7 @@ const Main = () => {
     const fetchMovieDetails = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3000/screening/details?movieId=${devMovieId}&placeId=${devPlaceId}&auditoriumNumber=${devAuditoriumNumber}`
+          `http://10.0.0.32:3000/screening/details?movieId=${devMovieId}&placeId=${devPlaceId}&auditoriumNumber=${devAuditoriumNumber}`
         );
         if (!response.ok) throw new Error("Failed to fetch screening data");
 
@@ -140,16 +140,7 @@ const Main = () => {
             zIndex: 10
           }}
         >
-          <Pressable>
-            <Image
-              source={images.playButtonOverlayColor}
-              style={{
-                height: 144,
-                width: 144
-              }}
-              resizeMode="contain"
-            />
-          </Pressable>
+          <PlayButton audioSource={AD_Sample} />
         </View>
 
         <NavButton currentScreen="main" />

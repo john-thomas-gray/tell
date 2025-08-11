@@ -1,7 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   // NOTE: Update this to include the paths to all of your component files.
-  content: ["./app/**/*.{js,jsx,ts,tsx}", "./components/**/*.{js,jsx,ts,tsx}"],
+  content: [
+    "./app/**/*.{js,jsx,ts,tsx,mp3,wav}",
+    "./components/**/*.{js,jsx,ts,tsx,mp3,wav}"
+  ],
   presets: [require("nativewind/preset")],
   theme: {
     extend: {
@@ -25,36 +28,36 @@ module.exports = {
         "ebgaramond-bold": ["EBGaramond-Bold"],
         "ebgaramond-bold-italic": ["EBGaramond-BoldItalic"],
         "ebgaramond-extrabold": ["EBGaramond-ExtraBold"],
-        "ebgaramond-extrabold-italic": ["EBGaramond-ExtraBoldItalic"],
+        "ebgaramond-extrabold-italic": ["EBGaramond-ExtraBoldItalic"]
       },
       colors: {
         red: {
           100: "#EF6F73",
           200: "#E3000A",
           300: "#CC0E2C",
-          400: "#82091C",
+          400: "#82091C"
         },
         blue: {
-          100: "#00A8E1",
+          100: "#00A8E1"
         },
         gray: {
           100: "#B3B3B3",
           200: "#696969",
           300: "#2B2B2B",
           400: "#141414",
-          450: "rgba(20, 20, 20, 0.5)",
+          450: "rgba(20, 20, 20, 0.5)"
         },
         purple: {
-          100: "#3B0249",
+          100: "#3B0249"
         },
         scrollButton: {
           default: "#000000",
           pressed: "rgba(0, 168, 225, 0.1)",
-          ripple: "rgba(0, 168, 225, 0.1)",
+          ripple: "rgba(0, 168, 225, 0.1)"
         },
         fandango: {
           blue: "#3478C1",
-          orange: "#FF7300",
+          orange: "#FF7300"
         },
         success: {
           100: "#F0FFF4",
@@ -65,7 +68,7 @@ module.exports = {
           600: "#2F855A",
           700: "#276749",
           800: "#22543D",
-          900: "#1C4532",
+          900: "#1C4532"
         },
         danger: {
           100: "#FFF5F5",
@@ -76,7 +79,7 @@ module.exports = {
           600: "#E53E3E",
           700: "#C53030",
           800: "#9B2C2C",
-          900: "#742A2A",
+          900: "#742A2A"
         },
         warning: {
           100: "#FFFBEB",
@@ -87,7 +90,7 @@ module.exports = {
           600: "#CA8A04",
           700: "#A16207",
           800: "#854D0E",
-          900: "#713F12",
+          900: "#713F12"
         },
         general: {
           100: "#CED1DD",
@@ -97,10 +100,10 @@ module.exports = {
           500: "#F6F8FA",
           600: "#E6F3FF",
           700: "#EBEBEB",
-          800: "#ADADAD",
-        },
-      },
-    },
+          800: "#ADADAD"
+        }
+      }
+    }
   },
-  plugins: [],
+  plugins: []
 };
