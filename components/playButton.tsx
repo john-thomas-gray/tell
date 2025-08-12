@@ -26,7 +26,7 @@ const PlayButton = ({ audioSource }: PlayButtonProps) => {
   }, [audioSource, audioPlayer]);
 
   useEffect(() => {
-    progress.value = withTiming(isMuted ? 0 : 1, { duration: 300 });
+    progress.value = withTiming(isMuted ? 0 : 1, { duration: 1000 });
   }, [isMuted]);
 
   const handlePlayButtonPress = () => {
