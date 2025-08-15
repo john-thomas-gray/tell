@@ -74,7 +74,6 @@ const Main = () => {
         const response = await fetch(
           `http://10.0.0.32:3000/screening/details?movieId=${devMovieId}&placeId=${devPlaceId}&auditoriumNumber=${devAuditoriumNumber}`
         );
-        if (!response.ok) throw new Error("Failed to fetch screening data");
 
         const data = await response.json();
         setFetchedTitle(data.title);
@@ -131,8 +130,8 @@ const Main = () => {
         <View
           style={{
             position: "absolute",
-            top: 315,
-            bottom: 315,
+            top: 320,
+            bottom: 245,
             left: 128,
             right: 128,
             justifyContent: "center",
@@ -142,9 +141,8 @@ const Main = () => {
         >
           <PlayButton audioSource={AD_Sample} />
         </View>
-
-        <NavButton currentScreen="main" />
       </ImageBackground>
+      <NavButton currentScreen="main" />
     </View>
   );
 };
