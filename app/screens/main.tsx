@@ -68,6 +68,9 @@ const linearGradientVariants: Record<
 const Main = () => {
   const [fetchedTitle, setFetchedTitle] = useState<string | null>(null);
   const [posterPath, setPosterPath] = useState<string | null>(null);
+  const [creditsEnd, setCreditsEnd] = useState<Date | null>(null);
+  const [previewsStart, setPreviewsStart] = useState<Date | null>(null);
+  const [movieStart, setMovieStart] = useState<Date | null>(null);
   useEffect(() => {
     const fetchMovieDetails = async () => {
       try {
@@ -78,6 +81,9 @@ const Main = () => {
         const data = await response.json();
         setFetchedTitle(data.title);
         setPosterPath(data.poster_path);
+        setCreditsEnd(new Date(data.credits_end));
+        setPreviewsStart(new Date(data.previews_start));
+        setMovieStart(new Date(data.movie_start));
       } catch (error) {
         console.error("Error fetching screening details:", error);
       }
@@ -124,7 +130,7 @@ const Main = () => {
             {fetchedTitle ?? backupMovieTitle}
           </TellText>
           <TellText style={styles.auditorium} numberOfLines={1}>
-            Auditorium 16
+            {`Auditorium ${devAuditoriumNumber}`}
           </TellText>
         </View>
         <View
@@ -139,7 +145,12 @@ const Main = () => {
             zIndex: 10
           }}
         >
-          <PlayButton audioSource={AD_Sample} />
+          <PlayButton
+            audioSource={AD_Sample}
+            previewsStart={previewsStart}
+            movieStart={movieStart}
+            creditsEnd={creditsEnd}
+          />
         </View>
       </ImageBackground>
       <NavButton currentScreen="main" />

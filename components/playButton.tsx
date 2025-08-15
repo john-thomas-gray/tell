@@ -1,4 +1,5 @@
 import { images } from "@/constants";
+import getOffsetSeconds from "@/utils/getOffsetSeconds";
 import { useAudioPlayer } from "expo-audio";
 import React, { useEffect, useState } from "react";
 import { Image, Pressable } from "react-native";
@@ -11,16 +12,28 @@ import Animated, {
 
 type PlayButtonProps = {
   audioSource: string;
+  previewsStart: Date | null;
+  movieStart: Date | null;
+  creditsEnd: Date | null;
 };
 
-const PlayButton = ({ audioSource }: PlayButtonProps) => {
+const PlayButton = ({
+  audioSource,
+  previewsStart,
+  movieStart,
+  creditsEnd
+}: PlayButtonProps) => {
   const audioPlayer = useAudioPlayer(audioSource);
   const [isMuted, setIsMuted] = useState(true);
   const progress = useSharedValue(0);
-
+  const devMovieStart = new Date("2025-08-15T19:30:00.000Z");
+  movieStart = devMovieStart;
   useEffect(() => {
-    if (audioSource && audioPlayer) {
+    if (audioSource && audioPlayer && movieStart) {
+      const offsetTime = getOffsetSeconds(devMovieStart);
+
       audioPlayer.play();
+      audioPlayer.seekTo(offsetTime);
       audioPlayer.muted = true;
     }
   }, [audioSource, audioPlayer]);
